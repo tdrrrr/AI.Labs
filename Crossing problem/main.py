@@ -67,6 +67,42 @@ def passed_or_not(person, side):
         return True
     return False
 
+def backtracking( peopleleft , peopleright, side):
+    person=peopleleft.pop()
+
+    if person is None  :
+        return True
+    if side == 'left':
+        side='right'
+    else:
+        side = 'left'
+    for nextpers in peopleleft:
+        if verify_transport(person, nextpers, side) == True :
+            peopleleft.remove(person)
+            peopleright.append(nextpers)
+            peopleright.append(person)
+            if backtracking(peopleleft,peopleright,side)==True:
+                print('transport ',side,'cu ',person,' si ', nextpers)
+    return False
+
+def BFS( peopleleft , peopleright, side):
+    person=peopleleft[0]
+
+    if person is not None  :
+        if (side == 'left'):
+            side='right'
+        else:
+            side = 'left'
+        for nextpers in peopleleft:
+            if verify_transport(person, nextpers, side) == True :
+                people.remove(person)
+                peopleright.append(person,nextpers)
+                print('transport ',side,'cu ',person,' si ', nextpers)
+                break;
+        BFS(peopleleft,peopleright,side)
+
+
+
 
 if __name__ == '__main__':
     initialize(3)
@@ -75,5 +111,12 @@ if __name__ == '__main__':
     transport(men[0], men[1], "right")
     print(men)
     print(women)
+    
+    #backtracking si bfs
+    peopleleft=men+women
+    peopleright = []
+    side = 'left'
+    backtracking(peopleleft,peopleright,side)
+    BFS(peopleleft,peopleright,side)
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
