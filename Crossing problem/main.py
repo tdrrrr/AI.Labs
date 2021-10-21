@@ -148,7 +148,7 @@ def transport(person1, person2, side):
     return False
 
 
-def passed_or_not(person, side):
+def  passed_or_not(person, side):
     if person[2] == side:
         return True
     return False
