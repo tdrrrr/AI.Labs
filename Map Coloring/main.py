@@ -58,6 +58,7 @@ def mrv_coloring():
                         city[2].remove(mrv_city[1])
         colored += 1
 
+
 if __name__ == '__main__':
     init_cities()
     #test_list()
