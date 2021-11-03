@@ -54,7 +54,7 @@ def play():
             if number > nr_of_colors:
                 print('Eroare la insertie, culoare inexistenta sau format gresit')
                 continue
-        if verify_state(state):
+        if compare(state_int, final_state) == 4:
             print('You Won!')
             break
         states.append(state_int)
